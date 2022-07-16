@@ -1,0 +1,62 @@
+/************************************
+****** Animazioni ed effetti ********
+************************************/
+#btn:hover {
+    background: linear-gradient(190deg, #a1e7fc 5%,  #0e23b0 100%);
+    filter: brightness(80%);
+}
+#btn:active {
+    position: relative;
+    top: 5px;
+}
+/* Animazone bounce */
+.bounce {
+    animation: bounce 0.9s both;
+}
+@keyframes bounce {
+    0% {transform: translateY(-60px); animation-timing-function: ease-in; opacity: 1;}
+    24% {opacity: 1;}
+    40% {transform: translateY(-45px);animation-timing-function: ease-in;}
+    65% {transform: translateY(-25px); animation-timing-function: ease-in;}
+    82% {transform: translateY(-10px); animation-timing-function: ease-in;}
+    93% {transform: translateY(-6px); animation-timing-function: ease-in;}
+    25%,55%,75%,85% {transform: translateY(0px); animation-timing-function: ease-out;}
+    100% {transform: translateY(0px); animation-timing-function: ease-out; opacity: 1;}
+}
+/* Animazone Swing */
+.swing {
+    transform-origin: top center;
+    animation: swing 1s both;
+}
+@keyframes swing {
+    20% {transform: rotate3d(0, 0, 1, 15deg);}
+    40% {transform: rotate3d(0, 0, 1, -10deg);}
+    60% {transform: rotate3d(0, 0, 1, 5deg);}
+    80% {transform: rotate3d(0, 0, 1, -5deg);}
+    to {transform: rotate3d(0, 0, 1, 0deg);}
+}
+/* Animazone Wobble */
+.wobble {
+    animation: wobble-hor-top 0.8s both;
+}
+@keyframes wobble {
+    0%, 100% {transform: translateX(0%); transform-origin: 50% 50%;}
+    15% {transform: translateX(-30px) rotate(6deg);}
+    30% {transform: translateX(15px) rotate(-6deg);}
+    45% {transform: translateX(-15px) rotate(3.6deg);}
+    60% {transform: translateX(9px) rotate(-2.4deg);}
+    75% {transform: translateX(-6px) rotate(1.2deg);}
+}
+/* Animazone Jello */
+.jello {
+    animation: jello 0.8s both;
+}
+@keyframes jello {
+    0% {transform: skew(0deg 0deg);}
+    30% {transform: skew(25deg 25deg);}
+    40% {transform: skew(-15deg, -15deg);}
+    50% {transform: skew(15deg, 15deg);}
+    65% {transform: skew(-5deg, -5deg);}
+    75% {transform: skew(5deg, 5deg);}
+    100% {transform: skew(0deg 0deg);}
+}

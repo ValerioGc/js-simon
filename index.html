@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Simon Says</title>
         <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/effects.css">
     </head>
     <body>
         <main>
-            <div>
-                <h1>Ricorda i numeri</h1>
-                <button id="submit" class="d-none">Controlla Numeri</button>
+            <div id="container" class="b-standard">
+                <div class="text-center">
+                    <h1 class="bold swing">Simon Says</h1>
+                    <h2>Hai <span id="countd">30</span> secondi per memorizzare i numeri</h2>
+                    <button id="btn" class="bold b-standard">Avvia</button>
+                </div>
+                <ul id="numberContainer" class="bounce d-none bold b-standard text-center"></ul>
             </div>
-            <ul id="numberContainer"></ul>
         </main>
         <script src="js/main.js"></script>
     </body>
 </html>
-
-
-
