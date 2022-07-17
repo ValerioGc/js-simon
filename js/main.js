@@ -14,11 +14,9 @@ subBtn.addEventListener('click',
     function () {
         if (subBtn.innerHTML == 'Controlla Punteggio') {
             controlPoint();
-        }
-        else if (subBtn.innerHTML == 'Riavvia Partita') {
+        } else if (subBtn.innerHTML == 'Riavvia Partita') {
             location.reload();
-        }
-        else if (subBtn.innerHTML == 'Avvia') {
+        } else {
             subBtn.classList.add('d-none')
             subBtn.innerHTML = 'Controlla Punteggio';
             htmlEl.classList.remove('d-none');
@@ -29,10 +27,9 @@ subBtn.addEventListener('click',
                 htmlEl.innerHTML += `<li class="bounce b-standard">${arrNumb[i]}</li>`;
             }
         // Nascondi numeri prima dell'alert
-            // let primoTO = setTimeout(newStep, 30000);
-            let secondoT0 = setTimeout(hid, 30000);
+            setTimeout(hid, 30000);
         // TimeOut inserimento numeri
-            let primoTO = setTimeout(usrArrNumb, 32000);
+            setTimeout(usrArrNumb, 32000);
         }
     }
 );
@@ -49,21 +46,35 @@ function timerX(min, max) {
         }
         time--;
         lastT.innerHTML = time;
+        let arrLi = document.querySelectorAll('li');
         if (time <= (max / 2)) {
             lastT.style.color = 'red';
+            document.querySelectorAll('li')
+            for (let i = 0; i < arrLi.length; i++) {
+                arrLi[i].classList.add('shake');
+            }
+        }
+        if (time <= ((max / 2) / 2)) {
+            lastT.style.color = 'red';
+            for (let i = 0; i < arrLi.length; i++) {
+                arrLi[i].classList.remove('shake');
+                arrLi[i].classList.add('shake2');
+            }
         }
     }, 1000);
 }
 // Generatore numeri unici randomici - restituisce array numeri
 function randNumberGen(numberQuantity, min, max) {
     const arrayRand = [];
-    for (let i = 0; i < numberQuantity; i++) {
+    let i = 0
+    while (i < numberQuantity) {
         let condition = true;
         let randNumber = Math.floor(Math.random() * (max - min) + min);
         while (condition == true) {
             // Verifica doppione
             if (!arrayRand.includes(randNumber)) {
                 arrayRand.push(randNumber);
+                i++;
             } else {
                 condition = false;
             }
@@ -77,46 +88,41 @@ function usrArrNumb() {
     const usr_numb = [];
     for (let i = 0; i < numberQ; i++) {
     //Acquisisco input utente
-        let user_input = parseInt(prompt('Inserisci numero:'));
+        let user_input = prompt('Inserisci numero:');
     // Aggiunge numeri ad Array numeri
-        usr_numb.push(user_input);
+        usr_numb.push(parseInt(user_input));
     }
+    clearTimeout();
     return usr_numb;
 }
 //Funzione modifica elementi DOM
 function hid() {
     htmlEl.classList = 'd-none';
-    document.getElementById('btn').classList.remove('d-none');
     subTitle.innerText = '';
+    subBtn.classList.remove('d-none')
 }
-// Funzione trasformazione contenitore numeri in input
-// function newStep() {
-//     for (let i = 0; i < arrNumb.length; i++) {
-//         let listN = document.querySelector('ul li');
-//         listN.className = 'd-none';
-//         htmlEl.innerHTML += `<input class="userN"></input>`;
-//     }
-// }
 // Funzione confronto numeri per punteggio
 function controlPoint() {
 // Definisco array numeri inseriti dall'utente
     const user_numbers = usrArrNumb();
+    const user_numbers_control = [];
     console.log(`Array numeri utente inseriti = ${user_numbers}`);
     for (let i = 0; i < numberQ; i++) {
     // Verifica doppione
-        if (!arrNumb.includes(user_numbers[i])) {
+        if ( (!arrNumb.includes(user_numbers[i])) || (user_numbers_control.includes(user_numbers[i])) ) {
             points = points;
-            console.log(`Numero ${i} NON incluso nell array numeri Utente`);
+            console.log(`Il Numero ${user_numbers[i]} NON/GIA è incluso nell' array numeri Utente`);
         } else {
             points += 1;
-            console.log(`Numero ${i} incluso nell array numeri PC`);
-            console.log(`Punteggio = points`);
+            console.log(`Il Numero ${user_numbers[i]} è incluso nell' array numeri PC`);
+            console.log(`Punteggio = ${points}`);
+            user_numbers_control.push(user_numbers[i]);
         }
     }
-    console.log(`Punteggio finale = points`);
-    subTitle.classList.add('sc-h2');
+    console.log(`Punteggio finale = ${points}`);
+    subTitle.style.fontSize = '3rem';
     subTitle.innerHTML = `Hai Indovinato <span id="pt" class="bold">${points}</span> Numeri!`;
-    subBtn.innerHTML = `Riavvia Partita`;
+    setTimeout(() => {subBtn.innerHTML = `Riavvia Partita`;}, 1000);
     if (points == 0) {
         document.getElementById('pt').style.color = 'red';
     } else {

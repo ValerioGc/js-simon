@@ -9,17 +9,6 @@
     margin: 0;
     padding: 0;
 }
-@font-face {
-    /* Font 1 */
-    font-family : 'myFont';
-    src: url("../fonts/Gameplay.ttf");
-    /* Font 2 */
-    font-family: 'clkFont';
-    src: url("../fonts/digital-7.ttf");
-    /* Font 3 */
-    font-family: 'myFont3';
-    src: url("../fonts/");
-}
 .d-none {
     display: none!important;
 }
@@ -37,10 +26,10 @@
     display: inline-block;
     transform: translateY(6px);
     font-size: 3rem;
-    font-family: 'clkFont', sans-serif;
 }
 /* Bottoni */
-#btn {
+#btn,
+#btn2 {
     margin-bottom: 50px;
     padding: 8px 15px;
     border-radius: 12px;
@@ -59,7 +48,6 @@ body {
 h1 {
     padding-top: 70px;
     font-size: 4rem;
-    font-family: 'myFont', sans-serif;
     text-transform: uppercase;
 }
 h2 {
@@ -103,7 +91,4 @@ input,
     font-size: 3.5rem;
     transform: translateY(5px);
     display: inline-block;
-}
-.sc-h2 {
-    font-size: 3rem;
 }
